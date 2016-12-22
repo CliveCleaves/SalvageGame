@@ -6,14 +6,8 @@ public class SpawnController : MonoBehaviour {
 	public GameObject WaterPrefab;
 	Vector2 currentPos;
 
-	// Use this for initialization
 	void Start () {
 		LoadWater();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	void LoadWater() {
