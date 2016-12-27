@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -18,9 +19,23 @@ public class PlayerController : MonoBehaviour {
 		float v = Input.GetAxis ("Vertical");
 		float h = Input.GetAxis ("Horizontal");
 
+		float vm = CrossPlatformInputManager.GetAxis ("Vertical");
+		float hm = CrossPlatformInputManager.GetAxis ("Horizontal");
+
 		if (v != 0 || h != 0) {
 			if (!part.isPlaying) part.Play();
 			float myAngle = Mathf.Atan2 (-Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")) * Mathf.Rad2Deg;
+			float angle = Mathf.MoveTowardsAngle (transform.eulerAngles.z, myAngle, rotSpeed * Time.deltaTime);
+			transform.eulerAngles = new Vector3 (0, 0, angle);
+
+			rig.AddForce (transform.up * 2 * (moveSpeed));
+
+		} else {
+			if (part.isPlaying) part.Stop();
+		}
+		if (vm != 0 || hm != 0) {
+			if (!part.isPlaying) part.Play();
+			float myAngle = Mathf.Atan2 (-CrossPlatformInputManager.GetAxis ("Horizontal"), CrossPlatformInputManager.GetAxis ("Vertical")) * Mathf.Rad2Deg;
 			float angle = Mathf.MoveTowardsAngle (transform.eulerAngles.z, myAngle, rotSpeed * Time.deltaTime);
 			transform.eulerAngles = new Vector3 (0, 0, angle);
 
