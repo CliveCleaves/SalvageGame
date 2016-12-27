@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	Rigidbody2D rig;
 	ParticleSystem part;
-	float rotSpeed = 70f;
+
+	float rotSpeed = 100f;
 	float moveSpeed = 20f;
 
 	void Start () {
