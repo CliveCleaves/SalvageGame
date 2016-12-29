@@ -54,6 +54,7 @@
      <Compile Include="Assets\Assets\Scripts\PlayerDeath.cs" />
      <Compile Include="Assets\Assets\Scripts\SpawnController.cs" />
      <Compile Include="Assets\Assets\Scripts\SpawnTorpedos.cs" />
+     <Compile Include="Assets\ChasePlayer.cs" />
      <Compile Include="Assets\FollowMouse.cs" />
      <Compile Include="Assets\PlayerShooting.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

@@ -11,10 +11,14 @@ public class PlayerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (Input.GetButtonDown("Fire1")) {
 			Debug.Log("Firing");
-			Quaternion rot = Quaternion.identity;
-			GameObject shellgo = (GameObject)Instantiate (Shell, transform.position, rot);
+			//Vector3 pos = transform.position;
+			Vector3 pos = transform.position + (Vector3.forward * 2);
+			pos.z = -6;
+			GameObject shellgo = (GameObject)Instantiate (Shell, pos, transform.rotation);
+			Destroy(shellgo, 5f);
 		}
 	}
 }

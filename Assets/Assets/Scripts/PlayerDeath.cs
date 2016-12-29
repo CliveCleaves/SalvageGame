@@ -17,7 +17,7 @@ public class PlayerDeath : MonoBehaviour {
 		Debug.Log (col.gameObject.name);
 		if (col.gameObject.layer == 10) {
 			Vector3 pos = transform.position;
-			pos.z = -2;
+			pos.z = -6;
 			GameObject go = (GameObject)Instantiate (Burning, pos, Quaternion.identity, this.transform);
 			Destroy (this.gameObject.GetComponent<PlayerController> ());
 		}
