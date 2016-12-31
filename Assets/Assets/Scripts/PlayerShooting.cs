@@ -13,9 +13,7 @@ public class PlayerShooting : MonoBehaviour {
 	void Update () {
 		
 		if (Input.GetButtonDown("Fire1")) {
-			Debug.Log("Firing");
-			//Vector3 pos = transform.position;
-			Vector3 pos = transform.position + (Vector3.forward * 2);
+			Vector3 pos = transform.position;
 			pos.z = -6;
 			GameObject shellgo = (GameObject)Instantiate (Shell, pos, transform.rotation);
 			Destroy(shellgo, 5f);

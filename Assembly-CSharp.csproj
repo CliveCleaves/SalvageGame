@@ -46,17 +46,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Assets\Scripts\ChasePlayer.cs" />
      <Compile Include="Assets\Assets\Scripts\ExplodeOnCollide.cs" />
+     <Compile Include="Assets\Assets\Scripts\FollowMouse.cs" />
      <Compile Include="Assets\Assets\Scripts\FollowPlayer.cs" />
+     <Compile Include="Assets\Assets\Scripts\ForceConstant.cs" />
+     <Compile Include="Assets\Assets\Scripts\ForceOneTime.cs" />
      <Compile Include="Assets\Assets\Scripts\LookAtPlayer.cs" />
-     <Compile Include="Assets\Assets\Scripts\MoveForward.cs" />
      <Compile Include="Assets\Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Assets\Scripts\PlayerDeath.cs" />
+     <Compile Include="Assets\Assets\Scripts\PlayerShooting.cs" />
      <Compile Include="Assets\Assets\Scripts\SpawnController.cs" />
      <Compile Include="Assets\Assets\Scripts\SpawnTorpedos.cs" />
-     <Compile Include="Assets\ChasePlayer.cs" />
-     <Compile Include="Assets\FollowMouse.cs" />
-     <Compile Include="Assets\PlayerShooting.cs" />
+     <Compile Include="Assets\ShootAtPlayer.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

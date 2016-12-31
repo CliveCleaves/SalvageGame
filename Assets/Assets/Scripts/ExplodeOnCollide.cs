@@ -5,18 +5,21 @@ using UnityEngine;
 public class ExplodeOnCollide : MonoBehaviour {
 	public GameObject smallExplosion;
 	public GameObject bigExplosion;
-	bool big = true;
+	public GameObject deathSprite;
 
-	// Use this for initialization
+	bool big = true;
+	bool deathTrue;
+	bool spriteRendered = false;
+	Rigidbody2D rig;
+
 	void Start () {
-		
+		deathTrue = Camera.main.GetComponent<FollowPlayer> ().deathCam;
+		rig = transform.GetComponent<Rigidbody2D> ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 	}
-
 
 	void OnCollisionEnter2D (Collision2D col) {
 		Vector3 pos;
@@ -24,20 +27,26 @@ public class ExplodeOnCollide : MonoBehaviour {
 		if (col.gameObject.name == "PlayerObject") {
 			pos = col.gameObject.transform.position;
 			Time.timeScale = 0.2f;
-			Camera.main.GetComponent<FollowPlayer> ().deathCam = true;
+			deathTrue = true;
 		} else {
 			pos = this.gameObject.transform.position;
 		}
 
 		pos.z = -5;
-		Rigidbody2D rig = transform.GetComponent<Rigidbody2D> ();
 		rig.velocity = new Vector2 (0, 0);
-		GameObject exgo = (GameObject)Instantiate (smallExplosion, pos, Quaternion.identity);
+		GameObject exgo = (GameObject)Instantiate (smallExplosion, pos, transform.rotation);
 		if (bigExplosion != null) {
-			GameObject ex2go = (GameObject)Instantiate (bigExplosion, pos, Quaternion.identity);
-			Destroy (ex2go, 4f);
+			GameObject ex2go = (GameObject)Instantiate (bigExplosion, pos, transform.rotation);
+			Destroy (ex2go, 6f);
 		}
+
 		Destroy (exgo, 4f);
-		Destroy (this.gameObject, 0.3f);
+		if (deathSprite != null) {
+			if (spriteRendered == false) {
+				GameObject deathgo = (GameObject)Instantiate (deathSprite, transform.position, transform.rotation);
+				spriteRendered = true;
+			}
+		}
+		Destroy (this.gameObject, 0.2f);
 	}
 }

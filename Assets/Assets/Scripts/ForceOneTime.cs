@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForward : MonoBehaviour {
+public class ForceOneTime : MonoBehaviour {
 	Rigidbody2D rig;
 	public float moveSpeed = 20f;
 	// Use this for initialization
@@ -13,6 +13,7 @@ public class MoveForward : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		//rig.AddForce (transform.up * 2 * (moveSpeed));
 	}
 }
