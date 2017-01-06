@@ -6,6 +6,7 @@ public class ExplodeOnCollide : MonoBehaviour {
 	public GameObject smallExplosion;
 	public GameObject bigExplosion;
 	public GameObject deathSprite;
+	public Vector3 explode_pos;
 
 	bool big = true;
 	bool deathTrue;
@@ -18,7 +19,25 @@ public class ExplodeOnCollide : MonoBehaviour {
 	}
 
 	void Update () {
-		
+		if (explode_pos.x != 0) {
+			
+			Vector3 world_pos = Camera.main.WorldToScreenPoint (transform.position);
+			world_pos.z = -6;
+//			world_pos = world_pos * 2;
+//			world_pos = new Vector3 (Mathf.Round (world_pos.x), Mathf.Round (world_pos.y), -12);
+//			world_pos = world_pos / 2;
+//			Debug.Log (world_pos);
+
+			// Debug.Log (explode_pos);
+			Vector3 offset = explode_pos - world_pos;
+			float dist = Vector3.Distance(explode_pos, world_pos);
+			Debug.Log (dist);
+			if (dist < 50) {
+			//if (world_pos == explode_pos) {
+				// We're here!
+				Explode (explode_pos);
+			}
+		}
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
@@ -31,7 +50,10 @@ public class ExplodeOnCollide : MonoBehaviour {
 		} else {
 			pos = this.gameObject.transform.position;
 		}
+		Explode (pos);
 
+	}
+	void Explode(Vector3 pos) {
 		pos.z = -5;
 		rig.velocity = new Vector2 (0, 0);
 		GameObject exgo = (GameObject)Instantiate (smallExplosion, pos, transform.rotation);

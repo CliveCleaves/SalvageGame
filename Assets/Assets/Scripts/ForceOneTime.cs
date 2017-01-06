@@ -5,6 +5,7 @@ using UnityEngine;
 public class ForceOneTime : MonoBehaviour {
 	Rigidbody2D rig;
 	public float moveSpeed = 20f;
+
 	// Use this for initialization
 	void Start () {
 		rig = this.transform.GetComponent<Rigidbody2D>();
@@ -13,7 +14,6 @@ public class ForceOneTime : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		//rig.AddForce (transform.up * 2 * (moveSpeed));
 	}
 }
